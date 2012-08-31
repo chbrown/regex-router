@@ -8,7 +8,7 @@
     "url": "http://github.com/chbrown/regex-router.git"
   },
   "keywords": ["http", "web server", "regex", "routes"],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Christopher Brown <io@henrian.com>",
   "engines": { "node": ">= 0.4.0" }
 }

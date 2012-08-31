@@ -8,8 +8,8 @@ Router.prototype.route = function(req, res) {
   var route, m;
   for (var i = 0, l = this.routes.length; i < l; i++) {
     route = this.routes[i];
-    if (route.method === undefined || route.method === req.method.toLowerCase()) {
-      m = req.url.match(route.url);
+    if (route.http_method === undefined || route.http_method === req.method.toLowerCase()) {
+      m = req.url.match(route.regex);
       if (m) {
         return route.func(m, req, res);
       }
