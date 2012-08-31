@@ -1,0 +1,14 @@
+{
+	"main": "./main.js",
+  "name": "regex-router",
+  "description": "Route http requests via regular expressions.",
+  "homepage": "http://github.com/chbrown/regex-router",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/chbrown/regex-router.git"
+  },
+  "keywords": ["http", "web server", "regex", "routes"],
+  "version": "0.1.1",
+  "author": "Christopher Brown <io@henrian.com>",
+  "engines": { "node": ">= 0.4.0" }
+}
