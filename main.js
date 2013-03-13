@@ -29,7 +29,8 @@ Router.prototype.add = function(regex, http_method, func) {
 };
 
 // add router.get(url, func), router.GET(url, func) shortcuts for common http methods
-var http_methods = ['get', 'put', 'post', 'head', 'delete'];
+// PATCH is not an official HTTP/1.1 method (http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)
+var http_methods = ['options', 'get', 'head', 'post', 'put', 'delete', 'trace', 'connect', 'patch'];
 http_methods.forEach(function(http_method) {
   Router.prototype[http_method] = Router.prototype[http_method.toUpperCase()] =
     function(url, func) { this.add(url, http_method, func); };
