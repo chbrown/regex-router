@@ -1,11 +1,12 @@
-#!/usr/bin/env node
+'use strict'; /*jslint node: true, indent: 2, es5: true*/
 function Router() {
   // this.routes contents: {regex: regex, http_method: http_method, func: func}
   this.routes = [];
 }
 
 Router.prototype.route = function(req, res) {
-  var route, m;
+  var route;
+  var m;
   for (var i = 0, l = this.routes.length; i < l; i++) {
     route = this.routes[i];
     if (route.http_method === undefined || route.http_method === req.method.toLowerCase()) {
@@ -27,6 +28,8 @@ Router.prototype.add = function(regex, http_method, func) {
   // func signature: (regex_match, req, res)
   this.routes.push({regex: regex, http_method: http_method, func: func});
 };
+
+Router.prototype.any = Router.prototype.ANY = function(url, func) { this.add(url, func); };
 
 // add router.get(url, func), router.GET(url, func) shortcuts for common http methods
 // PATCH is not an official HTTP/1.1 method (http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)
