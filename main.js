@@ -29,8 +29,16 @@ Router.prototype.add = function(regex, http_method, func) {
   this.routes.push({regex: regex, http_method: http_method, func: func});
 };
 
-Router.prototype.any = Router.prototype.ANY = function(url, func) { this.add(url, func); };
+Router.prototype.any = Router.prototype.ANY = function(url, func) {
+  this.add(url, func);
+};
 
+Router.prototype.forward = function(url, router) {
+  this.add(url, function(m, req, res) {
+    // oops, discard m
+    router.route(req, res);
+  });
+};
 // add router.get(url, func), router.GET(url, func) shortcuts for common http methods
 // PATCH is not an official HTTP/1.1 method (http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)
 var http_methods = ['options', 'get', 'head', 'post', 'put', 'delete', 'trace', 'connect', 'patch'];
