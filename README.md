@@ -29,4 +29,4 @@ Regex-router is a simple Node.js library to simplify routing. By simple, I mean 
 
 ## License
 
-[Copyright © 2012 Christopher Brown. MIT Licensed.](LICENSE)
+Copyright © 2012-2013 Christopher Brown. [MIT Licensed](LICENSE).
