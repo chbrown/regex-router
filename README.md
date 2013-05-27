@@ -1,13 +1,13 @@
 # Regex-router
 
-Regex-router is a simple Node.js library to simplify routing. And by simplify, I mean 39 lines of code.
+Regex-router is a simple Node.js library to simplify routing. By simple, I mean 50 lines of code.
 
 # Example
 
-    var fs = require('fs'),
-      http = require('http'),
-      Router = require('regex-router'),
-      r = new Router();
+    var fs = require('fs');
+    var http = require('http');
+    var Router = require('regex-router');
+    var r = new Router();
 
     r.get(/^\/page\/(\w+)/, function(m, req, res) {
       console.log('Serving URL:', req.url);

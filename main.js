@@ -5,10 +5,9 @@ function Router() {
 }
 
 Router.prototype.route = function(req, res) {
-  var route;
   var m;
   for (var i = 0, l = this.routes.length; i < l; i++) {
-    route = this.routes[i];
+    var route = this.routes[i];
     if (route.http_method === undefined || route.http_method === req.method.toLowerCase()) {
       m = req.url.match(route.regex);
       if (m) {
