@@ -26,3 +26,7 @@ Regex-router is a simple Node.js library to simplify routing. And by simplify, I
     http.createServer(function(req, res) {
       r.route(req, res);
     }).listen(80, 'localhost');
+
+## License
+
+[Copyright © 2012 Christopher Brown. MIT Licensed.](LICENSE)
