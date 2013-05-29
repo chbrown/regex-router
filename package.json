@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git://github.com/chbrown/regex-router.git"
   },
-  "main": "./index.js",
+  "main": "index.js",
   "license": "MIT",
   "author": "Christopher Brown <io@henrian.com>"
 }
