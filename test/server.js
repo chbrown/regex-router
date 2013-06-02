@@ -19,7 +19,7 @@ test('basic server', function (t) {
   // set up the server
   var hostname = '127.0.0.1';
   var server = require('http').createServer(function(req, res) {
-    console.error('URL: ' + req.url);
+    // console.error('URL: ' + req.url);
     r.route(req, res);
   }).listen(0, hostname, function() { // port = 0 finds random free port
     // server running, ready to run tests 
