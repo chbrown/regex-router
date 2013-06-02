@@ -1,6 +1,6 @@
 # Regex-router
 
-Regex-router is a simple Node.js library to simplify routing. By simple, I mean 50 lines of code.
+Regex-router is a simple Node.js library to simplify routing. By simple, I mean 35 lines of code.
 
 # Example
 
