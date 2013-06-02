@@ -16,5 +16,12 @@
   },
   "main": "index.js",
   "license": "MIT",
-  "author": "Christopher Brown <io@henrian.com>"
+  "author": "Christopher Brown <io@henrian.com>",
+  "devDependencies": {
+    "tap": "~0.4",
+    "request": "~2"
+  },
+  "scripts": {
+    "test": "tap test"
+  }
 }
