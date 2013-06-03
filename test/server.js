@@ -35,7 +35,7 @@ test('basic server', function (t) {
     });
   });
 
-  t.on('fulfill', function() {
+  t.tearDown(function() {
     server.close();
   });
 });
