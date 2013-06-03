@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": "Christopher Brown <io@henrian.com>",
   "devDependencies": {
-    "tap": "git://github.com/chbrown/node-tap.git",
+    "tap": "~0.4",
     "request": "~2"
   },
   "scripts": {
