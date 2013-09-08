@@ -1,6 +1,6 @@
 {
   "name": "regex-router",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "Route http(s) requests via regular expressions",
   "keywords": [
     "http",
