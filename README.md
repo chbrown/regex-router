@@ -1,31 +1,34 @@
 # Regex-router
 
-Regex-router is a simple Node.js library to simplify routing. By simple, I mean 35 lines of code.
+Regex-router is a simple Node.js library to simplify web application routing without using a framework.
 
-# Example
+Only [31 lines of code](index.js) (not counting tests)!
 
-    var fs = require('fs');
-    var http = require('http');
-    var Router = require('regex-router');
-    var r = new Router();
+## Example
 
-    r.get(/^\/page\/(\w+)/, function(m, req, res) {
-      console.log('Serving URL:', req.url);
-      var page_name = m[1],
-        page_path = __dirname + '/static_pages/' + page_name + '.html';
-      fs.readFile(page_path, 'utf8', function(err, html) {
-        res.write(html);
-        res.end();
-      });
-    });
+```javascript
+var fs = require('fs');
+var http = require('http');
+var Router = require('regex-router');
 
-    r.default = function(m, req, res) {
-      res.end('404. URL not found:', req.url);
-    })
+var R = new Router(function(req, res, m) {
+  res.end('404. URL not found:', req.url);
+});
 
-    http.createServer(function(req, res) {
-      r.route(req, res);
-    }).listen(80, 'localhost');
+R.get(/^\/page\/(\w+)/, function(req, res, m) {
+  console.log('Serving URL:', req.url);
+  var page_name = m[1];
+  var page_path = __dirname + '/static_pages/' + page_name + '.html';
+  fs.readFile(page_path, 'utf8', function(err, html) {
+    res.write(html);
+    res.end();
+  });
+});
+
+http.createServer(function(req, res) {
+  R.route(req, res);
+}).listen(80, 'localhost');
+```
 
 ## License
 

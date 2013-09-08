@@ -1,9 +1,10 @@
 {
   "name": "regex-router",
   "version": "0.1.9",
-  "description": "Route http requests via regular expressions.",
+  "description": "Route http(s) requests via regular expressions",
   "keywords": [
     "http",
+    "nodeps",
     "web server",
     "regex",
     "routes",
@@ -14,12 +15,11 @@
     "type": "git",
     "url": "git://github.com/chbrown/regex-router.git"
   },
-  "main": "index.js",
   "license": "MIT",
   "author": "Christopher Brown <io@henrian.com>",
   "devDependencies": {
-    "tap": "~0.4",
-    "request": "~2"
+    "tap": "*",
+    "request": "*"
   },
   "scripts": {
     "test": "tap test"
