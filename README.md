@@ -12,11 +12,11 @@ var http = require('http');
 var Router = require('regex-router');
 
 var R = new Router(function(req, res, m) {
-  res.end('404. URL not found:', req.url);
+  res.end('404. URL not found: ' + req.url);
 });
 
 R.get(/^\/page\/(\w+)/, function(req, res, m) {
-  console.log('Serving URL:', req.url);
+  console.log('Serving URL: %s', req.url);
   var page_name = m[1];
   var page_path = __dirname + '/static_pages/' + page_name + '.html';
   fs.readFile(page_path, 'utf8', function(err, html) {
@@ -27,7 +27,7 @@ R.get(/^\/page\/(\w+)/, function(req, res, m) {
 
 http.createServer(function(req, res) {
   R.route(req, res);
-}).listen(80, 'localhost');
+}).listen(80);
 ```
 
 ## License
