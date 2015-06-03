@@ -18,10 +18,11 @@
   "license": "MIT",
   "author": "Christopher Brown <io@henrian.com>",
   "devDependencies": {
-    "tap": "*",
-    "request": "*"
+    "mocha": "*",
+    "request": "*",
+    "typescript": "*"
   },
   "scripts": {
-    "test": "tap test"
+    "test": "make test"
   }
 }
