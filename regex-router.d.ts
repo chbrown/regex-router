@@ -37,6 +37,8 @@ declare module 'regex-router' {
         /** Copied from http.METHODS, with special match-all ANY */
         static HTTP_METHODS: string[];
         // Manually compiled list of shortcuts for common http methods
+        any(regExp: RegExp, handler: Handler): void;
+        ANY(regExp: RegExp, handler: Handler): void;
         delete(regExp: RegExp, handler: Handler): void;
         DELETE(regExp: RegExp, handler: Handler): void;
         get(regExp: RegExp, handler: Handler): void;
