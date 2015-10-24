@@ -51,22 +51,44 @@ export default class Router {
   Use method = 'ANY'
   */
   add(method: string, regExp: RegExp, handler: Handler): void {
-    this.routes.push({method: method.toUpperCase(), regExp: regExp, handler: handler});
+    this.routes.push({method: method.toUpperCase(), regExp, handler});
   }
 
-  /** Copied from http.METHODS, with special match-all ANY */
-  static HTTP_METHODS = [ 'ANY', // the rest are actual methods:
-    'CHECKOUT', 'CONNECT', 'COPY', 'DELETE', 'GET', 'HEAD', 'LOCK', 'M-SEARCH',
-    'MERGE', 'MKACTIVITY', 'MKCOL', 'MOVE', 'NOTIFY', 'OPTIONS', 'PATCH', 'POST',
-    'PROPFIND', 'PROPPATCH', 'PURGE', 'PUT', 'REPORT', 'SEARCH', 'SUBSCRIBE',
-    'TRACE', 'UNLOCK', 'UNSUBSCRIBE' ]
+  any(regExp: RegExp, handler: Handler) {
+    this.routes.push({method: 'ANY', regExp, handler});
+  }
+
+  delete(regExp: RegExp, handler: Handler) {
+    this.routes.push({method: 'DELETE', regExp, handler});
+  }
+  get(regExp: RegExp, handler: Handler) {
+    this.routes.push({method: 'GET', regExp, handler});
+  }
+  head(regExp: RegExp, handler: Handler) {
+    this.routes.push({method: 'HEAD', regExp, handler});
+  }
+  options(regExp: RegExp, handler: Handler) {
+    this.routes.push({method: 'OPTIONS', regExp, handler});
+  }
+  patch(regExp: RegExp, handler: Handler) {
+    this.routes.push({method: 'PATCH', regExp, handler});
+  }
+  post(regExp: RegExp, handler: Handler) {
+    this.routes.push({method: 'POST', regExp, handler});
+  }
+  put(regExp: RegExp, handler: Handler) {
+    this.routes.push({method: 'PUT', regExp, handler});
+  }
 }
 
 /**
-Add router.get(regExp, handler), router.GET(regExp, handler) shortcuts for
-all official HTTP method names.
+Add shortcuts for other official HTTP method names.
 */
-Router.HTTP_METHODS.forEach(method => {
-  Router.prototype[method] = Router.prototype[method.toLowerCase()] =
-    function(url, func) { this.add(method, url, func); };
+[
+  'CHECKOUT', 'CONNECT', 'COPY', 'LOCK', 'M-SEARCH', 'MERGE', 'MKACTIVITY',
+  'MKCOL', 'MOVE', 'NOTIFY', 'PROPFIND', 'PROPPATCH', 'PURGE', 'REPORT',
+  'SEARCH', 'SUBSCRIBE', 'TRACE', 'UNLOCK', 'UNSUBSCRIBE'
+].forEach(method => {
+  Router.prototype[method.toLowerCase()] =
+    function(regExp, handler) { this.routes.push({method, regExp, handler}) };
 });

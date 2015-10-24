@@ -32,6 +32,12 @@ export default class Router {
     Use method = 'ANY'
     */
     add(method: string, regExp: RegExp, handler: Handler): void;
-    /** Copied from http.METHODS, with special match-all ANY */
-    static HTTP_METHODS: string[];
+    any(regExp: RegExp, handler: Handler): void;
+    delete(regExp: RegExp, handler: Handler): void;
+    get(regExp: RegExp, handler: Handler): void;
+    head(regExp: RegExp, handler: Handler): void;
+    options(regExp: RegExp, handler: Handler): void;
+    patch(regExp: RegExp, handler: Handler): void;
+    post(regExp: RegExp, handler: Handler): void;
+    put(regExp: RegExp, handler: Handler): void;
 }
