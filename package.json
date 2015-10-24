@@ -13,14 +13,14 @@
   "homepage": "https://github.com/chbrown/regex-router",
   "repository": {
     "type": "git",
-    "url": "git://github.com/chbrown/regex-router.git"
+    "url": "https://github.com/chbrown/regex-router.git"
   },
+  "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
   "license": "MIT",
-  "author": "Christopher Brown <io@henrian.com>",
   "devDependencies": {
     "mocha": "*",
     "request": "*",
-    "typescript": "*"
+    "typescript": "next"
   },
   "scripts": {
     "test": "make test"

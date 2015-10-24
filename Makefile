@@ -1,19 +1,16 @@
 BIN := node_modules/.bin
-DTS := node/node mocha/mocha
 
-all: index.js
+all: index.js index.d.ts
 
-type_declarations: $(DTS:%=type_declarations/DefinitelyTyped/%.d.ts)
-type_declarations/DefinitelyTyped/%:
+node_modules/%:
 	mkdir -p $(@D)
-	curl -s https://raw.githubusercontent.com/chbrown/DefinitelyTyped/master/$* > $@
+	curl -s https://raw.githubusercontent.com/borisyankov/DefinitelyTyped/master/$* > $@
 
 $(BIN)/tsc $(BIN)/mocha:
 	npm install
 
-%.js: %.ts type_declarations $(BIN)/tsc
-	$(BIN)/tsc -m commonjs -t ES5 $<
+index.js index.d.ts: index.ts node_modules/node/node.d.ts $(BIN)/tsc
+	$(BIN)/tsc -d
 
-.PHONY: test
 test: index.js $(BIN)/mocha
-	$(BIN)/mocha test
+	$(BIN)/mocha tests

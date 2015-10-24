@@ -1,14 +1,13 @@
-/// <reference path="type_declarations/DefinitelyTyped/node/node.d.ts" />
-import http = require('http');
+import {IncomingMessage, ServerResponse} from 'http';
 
 /**
 Handler must register both the request and the response variables.
 */
-interface Handler {
-  (req: http.IncomingMessage, res: http.ServerResponse, match?: RegExpMatchArray): void;
+export interface Handler {
+  (req: IncomingMessage, res: ServerResponse, match?: RegExpMatchArray): void;
 }
 
-const notFound: Handler = function(req: http.IncomingMessage, res: http.ServerResponse) {
+const notFound: Handler = function(req: IncomingMessage, res: ServerResponse) {
   res.statusCode = 404;
   res.end('Not Found\n');
 }
@@ -17,7 +16,7 @@ const notFound: Handler = function(req: http.IncomingMessage, res: http.ServerRe
 Node.js's `http` module calls the HTTP verb the "method", e.g., 'GET', 'POST',
 'PATCH', 'OPTION', etc., so we go with `method` instead of `verb`.
 */
-interface Route {
+export interface Route {
   /**
   `method` should always be uppercase, since the Node.js HTTP parser only
   accepts requests with uppercase method strings.
@@ -27,14 +26,14 @@ interface Route {
   handler: Handler;
 }
 
-class Router {
+export default class Router {
   constructor(public defaultHandler: Handler = notFound,
               public routes: Route[] = []) { }
   /**
   Iterate through all the routes, in order, calling the handler of the first
   one that matches the incoming request.
   */
-  route(req: http.IncomingMessage, res: http.ServerResponse): void {
+  route(req: IncomingMessage, res: ServerResponse): void {
     for (var i = 0, route: Route; (route = this.routes[i]); i++) {
       // http.IncomingMessage#method is always uppercase for successful requests
       // and the corresponding Route#method value should always be uppercase too
@@ -71,5 +70,3 @@ Router.HTTP_METHODS.forEach(method => {
   Router.prototype[method] = Router.prototype[method.toLowerCase()] =
     function(url, func) { this.add(method, url, func); };
 });
-
-export = Router;

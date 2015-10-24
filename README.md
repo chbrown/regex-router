@@ -2,6 +2,7 @@
 
 Regex-router is a simple Node.js library to simplify web application routing without using a framework.
 
+
 ## Example
 
 ```javascript
@@ -28,6 +29,7 @@ http.createServer(function(req, res) {
 }).listen(80);
 ```
 
+
 ## License
 
-Copyright 2012-2015 Christopher Brown. [MIT Licensed](http://opensource.org/licenses/MIT).
+Copyright 2012-2015 Christopher Brown. [MIT Licensed](http://chbrown.github.io/licenses/MIT/#2012-2015).

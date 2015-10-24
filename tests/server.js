@@ -2,7 +2,7 @@
 var http = require('http');
 var assert = require('assert');
 var request = require('request');
-var Router = require('..');
+var Router = require('..').default;
 
 describe('basic server', function() {
   var server;

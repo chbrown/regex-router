@@ -41,6 +41,8 @@ var Router = (function () {
         'TRACE', 'UNLOCK', 'UNSUBSCRIBE'];
     return Router;
 })();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Router;
 /**
 Add router.get(regExp, handler), router.GET(regExp, handler) shortcuts for
 all official HTTP method names.
@@ -49,4 +51,3 @@ Router.HTTP_METHODS.forEach(function (method) {
     Router.prototype[method] = Router.prototype[method.toLowerCase()] =
         function (url, func) { this.add(method, url, func); };
 });
-module.exports = Router;
