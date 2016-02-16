@@ -1,5 +1,7 @@
 # Regex-router
 
+[![npm version](https://badge.fury.io/js/regex-router.svg)](https://www.npmjs.com/package/regex-router)
+
 Regex-router is a simple Node.js library to simplify web application routing without using a framework.
 
 
