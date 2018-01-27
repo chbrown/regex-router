@@ -25,6 +25,8 @@
     "typescript": "^2.6.2"
   },
   "scripts": {
-    "test": "make test"
+    "prepare": "tsc -d",
+    "test": "mocha tests/",
+    "clean": "tsc -d --listEmittedFiles | sed 's/^TSFILE: //' | xargs rm -v"
   }
 }

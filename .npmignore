@@ -1,4 +1,4 @@
-index.ts
-Makefile
+*.ts
+!*.d.ts
 tsconfig.json
 tests/
